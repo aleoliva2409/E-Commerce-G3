@@ -1,10 +1,12 @@
-const app  = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const app  = require('./src/app');
+const { conn } = require('./src/db');
+const PORT = process.env.PORT || 3001;
+
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  console.log('Conexión con la base de datos exitosa');
-  const server = app.listen(3001, () => {
+  console.log('Successful database connection!!');
+  const server = app.listen(PORT, () => {
      console.log(`Listening http://localhost:${server.address().port}`);
   });
 });
